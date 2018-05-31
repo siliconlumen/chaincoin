@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "bitcoin-config.h"
+#include "chaincoin-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -13,6 +13,7 @@
 #include "guiutil.h"
 #include "monitoreddatamapper.h"
 #include "optionsmodel.h"
+#include "darksend.h"
 
 #include "main.h" // for CTransaction::nMinTxFee and MAX_SCRIPTCHECK_THREADS
 #include "netbase.h"
@@ -68,6 +69,13 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 #endif
 
     /* Display elements init */
+    
+    /* Theme selector */
+    ui->theme->addItem(QString("CHAINCOIN-green"), QVariant("drkblue"));
+    ui->theme->addItem(QString("CHAINCOIN-traditional"), QVariant("trad"));
+
+    
+    /* Language selector */
     QDir translations(":translations");
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
     foreach(const QString &langStr, translations.entryList())
@@ -153,6 +161,7 @@ void OptionsDialog::setModel(OptionsModel *model)
     /* Network */
     connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Display */
+    connect(ui->theme, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->lang, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
 }
@@ -184,10 +193,17 @@ void OptionsDialog::setMapper()
 #endif
 
     /* Display */
+    mapper->addMapping(ui->theme, OptionsModel::Theme);
     mapper->addMapping(ui->lang, OptionsModel::Language);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->displayAddresses, OptionsModel::DisplayAddresses);
     mapper->addMapping(ui->thirdPartyTxUrls, OptionsModel::ThirdPartyTxUrls);
+
+
+    /* Darksend Rounds */
+    mapper->addMapping(ui->darksendRounds, OptionsModel::DarksendRounds);
+    mapper->addMapping(ui->anonymizeDarkcoin, OptionsModel::AnonymizeDarkcoinAmount);
+
 }
 
 void OptionsDialog::enableOkButton()
@@ -228,6 +244,7 @@ void OptionsDialog::on_resetButton_clicked()
 void OptionsDialog::on_okButton_clicked()
 {
     mapper->submit();
+    darkSendPool.cachedNumBlocks = 0;
     accept();
 }
 

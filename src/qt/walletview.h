@@ -15,8 +15,11 @@ class SendCoinsDialog;
 class SendCoinsRecipient;
 class TransactionView;
 class WalletModel;
+class MasternodeList;
+class LoggerPage;
 
 QT_BEGIN_NAMESPACE
+class QLabel;
 class QModelIndex;
 class QProgressDialog;
 QT_END_NAMESPACE
@@ -55,6 +58,8 @@ private:
     WalletModel *walletModel;
 
     OverviewPage *overviewPage;
+    MasternodeList *masternodeList;
+    LoggerPage *loggerPage;
     QWidget *transactionsPage;
     ReceiveCoinsDialog *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
@@ -62,8 +67,13 @@ private:
     TransactionView *transactionView;
 
     QProgressDialog *progressDialog;
+    QLabel *transactionSum;
 
 public slots:
+    /** Switch to logger Page */
+    void gotoLoggerPage();
+    /** Switch to master node list Page */
+    void gotomasternodeList();
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
@@ -91,6 +101,8 @@ public slots:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
+    /** Lock wallet */
+    void lockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();
@@ -102,6 +114,9 @@ public slots:
 
     /** Show progress dialog e.g. for rescan */
     void showProgress(const QString &title, int nProgress);
+    
+    /** Update selected CHAINCOIN amount from transactionview */
+    void trxAmount(QString amount);
 
 signals:
     /** Signal that we want to show the main window */

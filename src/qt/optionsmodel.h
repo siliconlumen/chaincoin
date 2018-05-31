@@ -37,11 +37,14 @@ public:
         DisplayUnit,            // BitcoinUnits::Unit
         DisplayAddresses,       // bool
         ThirdPartyTxUrls,       // QString
+        Theme,                  // QString        
         Language,               // QString
         CoinControlFeatures,    // bool
         ThreadsScriptVerif,     // int
         DatabaseCache,          // int
         SpendZeroConfChange,    // bool
+        DarksendRounds,    // int
+        AnonymizeDarkcoinAmount, //int
         OptionIDRowCount,
     };
 
@@ -84,6 +87,8 @@ private:
 signals:
     void displayUnitChanged(int unit);
     void transactionFeeChanged(qint64);
+    void darksendRoundsChanged(int);
+    void anonymizeDarkcoinAmountChanged(int);
     void coinControlFeaturesChanged(bool);
 };
 

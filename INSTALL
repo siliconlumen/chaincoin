@@ -1,5 +1,11 @@
-Building Bitcoin
+Building Chaincoin
 
-See doc/build-*.md for instructions on building bitcoind,
+Use the autogen script to prepare the build environment.
+
+    ./autogen.sh
+    ./configure
+    make
+
+See doc/build-*.md for instructions on building chaincoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Bitcoin.
+implementation of Chaincoin.

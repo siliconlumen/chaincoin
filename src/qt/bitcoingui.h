@@ -6,7 +6,7 @@
 #define BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "bitcoin-config.h"
+#include "chaincoin-config.h"
 #endif
 
 #include <QMainWindow>
@@ -90,10 +90,18 @@ private:
     QAction *encryptWalletAction;
     QAction *backupWalletAction;
     QAction *changePassphraseAction;
+    QAction *unlockWalletAction;
+    QAction *lockWalletAction;
     QAction *aboutQtAction;
+    QAction *openInfoAction;
     QAction *openRPCConsoleAction;
+    QAction *openNetworkAction;
+    QAction *openConfEditorAction;
+    QAction *showBackupsAction;
     QAction *openAction;
     QAction *showHelpMessageAction;
+    QAction *masternodeList;
+    QAction *openLoggerAction;
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -156,6 +164,10 @@ public slots:
 
 private slots:
 #ifdef ENABLE_WALLET
+    /** Switch to logger Page */
+    void gotoLoggerPage();
+    /** Switch to master node list Page */
+    void gotomasternodeList();
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */

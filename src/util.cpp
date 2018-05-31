@@ -1,20 +1,29 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2014-2015 The Dash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "util.h"
 
 #include "chainparams.h"
+#include "random.h"
 #include "netbase.h"
 #include "sync.h"
 #include "ui_interface.h"
 #include "uint256.h"
 #include "version.h"
+#include "allocators.h"
 
 #include <stdarg.h>
+#include <cassert>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <openssl/crypto.h> // for OPENSSL_cleanse()
+
 
 #ifndef WIN32
 // for posix_fallocate
@@ -86,6 +95,28 @@ namespace boost {
 
 using namespace std;
 
+// Log rotation
+#define MAX_ALLOWED_DEGUB_SIZE_IN_BYTES 10000000 // 10MB
+long long debugFileSize = 0;
+
+//Chaincoin only features
+bool fMasterNode = false;
+string strMasterNodePrivKey = "";
+string strMasterNodeAddr = "";
+bool fLiteMode = false;
+int nInstantXDepth = 1;
+int nDarksendRounds = 2;
+int nAnonymizeDarkcoinAmount = 1000;
+int nLiquidityProvider = 0;
+/** Spork enforcement enabled time */
+//int64_t enforceMasternodePaymentsTime = 4085657524; // Chaincoin
+int64_t enforceMasternodePaymentsTime = 9085657524;
+int nMasternodeMinProtocol = 0;
+bool fSucessfullyLoaded = false;
+bool fEnableDarksend = false;
+/** All denominations used by darksend */
+std::vector<int64_t> darkSendDenominations;
+
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
 bool fDebug = false;
@@ -98,6 +129,7 @@ bool fNoListen = false;
 bool fLogTimestamps = false;
 volatile bool fReopenDebugLog = false;
 CClientUIInterface uiInterface;
+
 
 // Init OpenSSL library multithreading support
 static CCriticalSection** ppmutexOpenSSL;
@@ -225,6 +257,14 @@ static boost::once_flag debugPrintInitFlag = BOOST_ONCE_INIT;
 static FILE* fileout = NULL;
 static boost::mutex* mutexDebugLog = NULL;
 
+long long getFileSize(FILE *fp){
+    long long prev = ftell(fp);
+    fseek(fp, 0L, SEEK_END);
+    long long sz = ftell(fp);
+    fseek(fp,prev,SEEK_SET); //go back to where we were
+    return sz;
+}
+
 static void DebugPrintInit()
 {
     assert(fileout == NULL);
@@ -233,7 +273,7 @@ static void DebugPrintInit()
     boost::filesystem::path pathDebug = GetDataDir() / "debug.log";
     fileout = fopen(pathDebug.string().c_str(), "a");
     if (fileout) setbuf(fileout, NULL); // unbuffered
-
+    debugFileSize = getFileSize(fileout);
     mutexDebugLog = new boost::mutex();
 }
 
@@ -265,6 +305,42 @@ bool LogAcceptCategory(const char* category)
     return true;
 }
 
+void rotateDebugFile() {
+	boost::system::error_code err;
+	boost::filesystem::path oldLogsDir = GetDataDir() / "logs"; 
+    if (fileout != NULL){
+        fclose (fileout);
+    }
+    if(!is_directory(oldLogsDir.parent_path()) || exists(oldLogsDir)) {
+        assert(!create_directory(oldLogsDir, err));
+		
+        if(is_directory(oldLogsDir)) {
+          assert(!err.value());
+        } else {
+          assert(err.value());
+        }
+    }
+    try {
+        if (create_directories(oldLogsDir)) {
+            assert(!create_directory(oldLogsDir));
+        }
+    } catch (std::exception& exc) {
+        std::stringstream ss; 
+        ss << "Could not create directory for rotated logs! Exception info: " << exc.what() << '\n';
+        LogPrintStr(ss.str());
+    }
+    boost::filesystem::path oldPathDebug = GetDataDir() / "debug.log";
+    std::string newName = "debug-" + DateTimeStrFormat("%Y-%m-%d %H:%M:%S", GetTime())  + ".log"; 
+    boost::filesystem::path newPathDebug = oldLogsDir / newName;
+
+    rename (oldPathDebug.string().c_str() , newPathDebug.string().c_str());
+
+    boost::filesystem::path pathDebug = GetDataDir() / "debug.log";
+    fileout = fopen(pathDebug.string().c_str(), "w");
+    if (fileout) setbuf(fileout, NULL); // unbuffered
+    debugFileSize = 0;
+}
+
 int LogPrintStr(const std::string &str)
 {
     int ret = 0; // Returns total number of characters written
@@ -289,6 +365,7 @@ int LogPrintStr(const std::string &str)
             boost::filesystem::path pathDebug = GetDataDir() / "debug.log";
             if (freopen(pathDebug.string().c_str(),"a",fileout) != NULL)
                 setbuf(fileout, NULL); // unbuffered
+            debugFileSize = getFileSize(fileout);
         }
 
         // Debug print useful for profiling
@@ -298,8 +375,12 @@ int LogPrintStr(const std::string &str)
             fStartedNewLine = true;
         else
             fStartedNewLine = false;
-
         ret = fwrite(str.data(), 1, str.size(), fileout);
+
+        debugFileSize += str.size();
+        if (debugFileSize>MAX_ALLOWED_DEGUB_SIZE_IN_BYTES) {
+            rotateDebugFile();
+        }
     }
 
     return ret;
@@ -491,10 +572,10 @@ void ParseParameters(int argc, const char* const argv[])
         //  interpret --foo as -foo (as long as both are not set)
         if (name.find("--") == 0)
         {
-            std::string singleDash(name.begin()+1, name.end());
-            if (mapArgs.count(singleDash) == 0)
-                mapArgs[singleDash] = entry.second;
-            name = singleDash;
+            std::string singleChaincoin(name.begin()+1, name.end());
+            if (mapArgs.count(singleChaincoin) == 0)
+                mapArgs[singleChaincoin] = entry.second;
+            name = singleChaincoin;
         }
 
         // interpret -nofoo as -foo=0 (and -nofoo=0 as -foo=1) as long as -foo not set
@@ -595,6 +676,33 @@ string EncodeBase64(const string& str)
     return EncodeBase64((const unsigned char*)str.c_str(), str.size());
 }
 
+// Base64 encoding with secure memory allocation
+SecureString EncodeBase64Secure(const SecureString& input)
+{
+    // Init openssl BIO with base64 filter and memory output
+    BIO *b64, *mem;
+    b64 = BIO_new(BIO_f_base64());
+    BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL); // No newlines in output
+    mem = BIO_new(BIO_s_mem());
+    BIO_push(b64, mem);
+
+    // Decode the string
+    BIO_write(b64, &input[0], input.size());
+    (void) BIO_flush(b64);
+
+    // Create output variable from buffer mem ptr
+    BUF_MEM *bptr;
+    BIO_get_mem_ptr(b64, &bptr);
+    SecureString output(bptr->data, bptr->length);
+
+    // Cleanse secure data buffer from memory
+    OPENSSL_cleanse((void *) bptr->data, bptr->length);
+
+    // Free memory
+    BIO_free_all(b64);
+    return output;
+}
+
 vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)
 {
     static const int decode64_table[256] =
@@ -682,6 +790,35 @@ string DecodeBase64(const string& str)
 {
     vector<unsigned char> vchRet = DecodeBase64(str.c_str());
     return string((const char*)&vchRet[0], vchRet.size());
+}
+
+// Base64 decoding with secure memory allocation
+SecureString DecodeBase64Secure(const SecureString& input)
+{
+    SecureString output;
+
+    // Init openssl BIO with base64 filter and memory input
+    BIO *b64, *mem;
+    b64 = BIO_new(BIO_f_base64());
+    BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL); //Do not use newlines to flush buffer
+    mem = BIO_new_mem_buf((void *) &input[0], input.size());
+    BIO_push(b64, mem);
+
+    // Prepare buffer to receive decoded data
+    if(input.size() % 4 != 0) {
+        throw runtime_error("Input length should be a multiple of 4");
+    }
+    size_t nMaxLen = input.size() / 4 * 3; // upper bound, guaranteed divisible by 4
+    output.resize(nMaxLen);
+
+    // Decode the string
+    size_t nLen;
+    nLen = BIO_read(b64, (void *) &output[0], input.size());
+    output.resize(nLen);
+
+    // Free memory
+    BIO_free_all(b64);
+    return output;
 }
 
 string EncodeBase32(const unsigned char* pch, size_t len)
@@ -871,7 +1008,6 @@ string DecodeBase32(const string& str)
     return string((const char*)&vchRet[0], vchRet.size());
 }
 
-
 bool WildcardMatch(const char* psz, const char* mask)
 {
     while (true)
@@ -914,7 +1050,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "bitcoin";
+    const char* pszModule = "chaincoin";
 #endif
     if (pex)
         return strprintf(
@@ -941,13 +1077,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Bitcoin
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Bitcoin
-    // Mac: ~/Library/Application Support/Bitcoin
-    // Unix: ~/.bitcoin
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Chaincoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Chaincoin
+    // Mac: ~/Library/Application Support/Chaincoin
+    // Unix: ~/.chaincoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Bitcoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Chaincoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -959,10 +1095,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "Bitcoin";
+    return pathRet / "Chaincoin";
 #else
     // Unix
-    return pathRet / ".bitcoin";
+    return pathRet / ".chaincoin";
 #endif
 #endif
 }
@@ -1011,8 +1147,15 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "bitcoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "chaincoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
+    return pathConfigFile;
+}
+
+boost::filesystem::path GetMasternodeConfigFile()
+{
+    boost::filesystem::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
+    if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;
 }
 
@@ -1020,15 +1163,20 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
                     map<string, vector<string> >& mapMultiSettingsRet)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
-    if (!streamConfig.good())
-        return; // No bitcoin.conf file is OK
+    if (!streamConfig.good()){
+        // Create empty chaincoin.conf if it does not excist
+        FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
+        if (configFile != NULL)
+            fclose(configFile);
+        return; // Nothing to read, so just return
+    }
 
     set<string> setOptions;
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override bitcoin.conf
+        // Don't overwrite existing settings so command line settings override chaincoin.conf
         string strKey = string("-") + it->string_key;
         if (mapSettingsRet.count(strKey) == 0)
         {
@@ -1044,7 +1192,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "bitcoind.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "chaincoind.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -1277,7 +1425,7 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong Bitcoin will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong Chaincoin will not work properly.");
                     strMiscWarning = strMessage;
                     LogPrintf("*** %s\n", strMessage);
                     uiInterface.ThreadSafeMessageBox(strMessage, "", CClientUIInterface::MSG_WARNING);
@@ -1290,27 +1438,6 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
             LogPrintf("|  ");
         }
         LogPrintf("nTimeOffset = %+d  (%+d minutes)\n", nTimeOffset, nTimeOffset/60);
-    }
-}
-
-uint32_t insecure_rand_Rz = 11;
-uint32_t insecure_rand_Rw = 11;
-void seed_insecure_rand(bool fDeterministic)
-{
-    //The seed values have some unlikely fixed points which we avoid.
-    if(fDeterministic)
-    {
-        insecure_rand_Rz = insecure_rand_Rw = 11;
-    } else {
-        uint32_t tmp;
-        do {
-            RAND_bytes((unsigned char*)&tmp, 4);
-        } while(tmp == 0 || tmp == 0x9068ffffU);
-        insecure_rand_Rz = tmp;
-        do {
-            RAND_bytes((unsigned char*)&tmp, 4);
-        } while(tmp == 0 || tmp == 0x464fffffU);
-        insecure_rand_Rw = tmp;
     }
 }
 
@@ -1384,7 +1511,20 @@ void runCommand(std::string strCommand)
     if (nErr)
         LogPrintf("runCommand error: system(%s) returned %d\n", strCommand, nErr);
 }
-
+std::string DurationToDHMS(int64_t nDurationTime)
+{
+    int seconds = nDurationTime % 60;
+    nDurationTime /= 60;
+    int minutes = nDurationTime % 60;
+    nDurationTime /= 60;
+    int hours = nDurationTime % 24;
+    int days = nDurationTime / 24;
+    if(days)
+        return strprintf("%dd %02dh:%02dm:%02ds", days, hours, minutes, seconds);
+    if(hours)
+        return strprintf("%02dh:%02dm:%02ds", hours, minutes, seconds);
+    return strprintf("%02dm:%02ds", minutes, seconds);
+}
 void RenameThread(const char* name)
 {
 #if defined(PR_SET_NAME)
@@ -1414,11 +1554,11 @@ void SetupEnvironment()
     #ifndef WIN32
     try
     {
-	#if BOOST_FILESYSTEM_VERSION == 3
+    #if BOOST_FILESYSTEM_VERSION == 3
             boost::filesystem::path::codecvt(); // Raises runtime error if current locale is invalid
-	#else				          // boost filesystem v2
+    #else                         // boost filesystem v2
             std::locale();                      // Raises runtime error if current locale is invalid
-	#endif
+    #endif
     } catch(std::runtime_error &e)
     {
         setenv("LC_ALL", "C", 1); // Force C locale

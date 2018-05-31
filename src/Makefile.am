@@ -3,32 +3,34 @@ include Makefile.include
 AM_CPPFLAGS += -I$(builddir)
 
 noinst_LIBRARIES = \
-  libbitcoin_server.a \
-  libbitcoin_common.a \
-  libbitcoin_cli.a
+  libchaincoin_server.a \
+  libchaincoin_common.a \
+  libchaincoin_cli.a
 if ENABLE_WALLET
-noinst_LIBRARIES += libbitcoin_wallet.a
+noinst_LIBRARIES += libchaincoin_wallet.a
 endif
 
 bin_PROGRAMS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += bitcoind
+  bin_PROGRAMS += chaincoind
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += bitcoin-cli
+  bin_PROGRAMS += chaincoin-cli
 endif
 
 SUBDIRS = . $(BUILD_QT) $(BUILD_TEST)
 DIST_SUBDIRS = . qt test
 .PHONY: FORCE
-# bitcoin core #
+# chaincoin core #
 BITCOIN_CORE_H = \
+  activemasternode.h \
   addrman.h \
   alert.h \
   allocators.h \
-  base58.h bignum.h \
+  base58.h \
+  bignum.h \
   bloom.h \
   chainparams.h \
   checkpoints.h \
@@ -39,14 +41,22 @@ BITCOIN_CORE_H = \
   compat.h \
   core.h \
   crypter.h \
+  darksend.h \
+  darksend-relay.h \
   db.h \
   hash.h \
   init.h \
+  instantx.h \
   key.h \
+  keepass.h \
   keystore.h \
   leveldbwrapper.h \
   limitedmap.h \
   main.h \
+  masternode.h \
+  masternode-pos.h \
+  masternodeman.h \
+  masternodeconfig.h \
   miner.h \
   mruset.h \
   netbase.h \
@@ -56,11 +66,30 @@ BITCOIN_CORE_H = \
   rpcclient.h \
   rpcprotocol.h \
   rpcserver.h \
-  script.h \
+  script/script.h \
   serialize.h \
+  crypto/sph_blake.h \
+  crypto/sph_bmw.h \
+  crypto/sph_cubehash.h \
+  crypto/sph_echo.h \
+  crypto/sph_groestl.h \
+  crypto/sph_jh.h \
+  crypto/sph_keccak.h \
+  crypto/sph_luffa.h \
+  crypto/sph_shavite.h \
+  crypto/sph_simd.h \
+  crypto/sph_skein.h \
+  crypto/sph_types.h \
+  spork.h \
   sync.h \
   threadsafety.h \
   tinyformat.h \
+  compat/byteswap.h \
+  compat/endian.h \
+  torcontrol.h \
+  crypto/hmac_sha256.h \
+  crypto/sha256.h \
+  common.h \
   txdb.h \
   txmempool.h \
   ui_interface.h \
@@ -87,7 +116,8 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 version.o: obj/build.h
 
-libbitcoin_server_a_SOURCES = \
+libchaincoin_server_a_SOURCES = \
+  activemasternode.cpp \
   addrman.cpp \
   alert.cpp \
   bloom.cpp \
@@ -101,6 +131,7 @@ libbitcoin_server_a_SOURCES = \
   net.cpp \
   noui.cpp \
   rpcblockchain.cpp \
+  rpcdarksend.cpp \
   rpcmining.cpp \
   rpcmisc.cpp \
   rpcnet.cpp \
@@ -111,73 +142,100 @@ libbitcoin_server_a_SOURCES = \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
-libbitcoin_wallet_a_SOURCES = \
+libchaincoin_wallet_a_SOURCES = \
+  activemasternode.cpp \
   db.cpp \
   crypter.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   wallet.cpp \
   walletdb.cpp \
+  keepass.cpp \
   $(BITCOIN_CORE_H)
 
-libbitcoin_common_a_SOURCES = \
+libchaincoin_common_a_SOURCES = \
+  activemasternode.cpp \
   base58.cpp \
   allocators.cpp \
   chainparams.cpp \
   core.cpp \
+  darksend.cpp \
+  darksend-relay.cpp \
+  masternode.cpp \
+  masternode-pos.cpp \
+  masternodeman.cpp \
+  masternodeconfig.cpp \
+  torcontrol.cpp \
+  crypto/hmac_sha256.cpp \
+  crypto/sha256.cpp \
+  instantx.cpp \
   hash.cpp \
   key.cpp \
   netbase.cpp \
   protocol.cpp \
   rpcprotocol.cpp \
-  script.cpp \
+  script/script.cpp \
   sync.cpp \
   util.cpp \
+  random.cpp \
   version.cpp \
+  crypto/aes_helper.c \
+  crypto/luffa.c \
+  crypto/groestl.c \
+  crypto/jh.c \
+  crypto/echo.c \
+  crypto/shavite.c \
+  crypto/keccak.c \
+  crypto/skein.c \
+  spork.cpp \
+  crypto/bmw.c \
+  crypto/simd.c \
+  crypto/cubehash.c \
+  crypto/blake.c \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libbitcoin_common_a_SOURCES += compat/glibc_compat.cpp
-libbitcoin_common_a_SOURCES += compat/glibcxx_compat.cpp
+libchaincoin_common_a_SOURCES += compat/glibc_compat.cpp
+libchaincoin_common_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-libbitcoin_cli_a_SOURCES = \
+libchaincoin_cli_a_SOURCES = \
   rpcclient.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_libbitcoin_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
+nodist_libchaincoin_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
 #
 
-# bitcoind binary #
-bitcoind_LDADD = \
-  libbitcoin_server.a \
-  libbitcoin_cli.a \
-  libbitcoin_common.a \
+# chaincoind binary #
+chaincoind_LDADD = \
+  libchaincoin_server.a \
+  libchaincoin_cli.a \
+  libchaincoin_common.a \
   $(LIBLEVELDB) \
   $(LIBMEMENV)
 if ENABLE_WALLET
-bitcoind_LDADD += libbitcoin_wallet.a
+chaincoind_LDADD += libchaincoin_wallet.a
 endif
-bitcoind_SOURCES = bitcoind.cpp
+chaincoind_SOURCES = chaincoind.cpp
 #
 
 if TARGET_WINDOWS
-bitcoind_SOURCES += bitcoind-res.rc
+chaincoind_SOURCES += chaincoind-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
-bitcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
+chaincoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
-# bitcoin-cli binary #
-bitcoin_cli_LDADD = \
-  libbitcoin_cli.a \
-  libbitcoin_common.a \
+# chaincoin-cli binary #
+chaincoin_cli_LDADD = \
+  libchaincoin_cli.a \
+  libchaincoin_common.a \
   $(BOOST_LIBS)
-bitcoin_cli_SOURCES = bitcoin-cli.cpp
+chaincoin_cli_SOURCES = chaincoin-cli.cpp
 #
 
 if TARGET_WINDOWS
-bitcoin_cli_SOURCES += bitcoin-cli-res.rc
+chaincoin_cli_SOURCES += chaincoin-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
@@ -188,7 +246,7 @@ leveldb/%.a:
 	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
 	  OPT="$(CXXFLAGS) $(CPPFLAGS)"
 
-qt/bitcoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_cli_a_SOURCES)
+qt/chaincoinstrings.cpp: $(libchaincoin_server_a_SOURCES) $(libchaincoin_common_a_SOURCES) $(libchaincoin_cli_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	@cd $(top_srcdir); XGETTEXT=$(XGETTEXT) share/qt/extract_strings_qt.py
 

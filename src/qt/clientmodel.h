@@ -1,4 +1,5 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2014-2015 The Dash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,10 +7,13 @@
 #define CLIENTMODEL_H
 
 #include <QObject>
-
 class AddressTableModel;
 class OptionsModel;
+class BanTableModel;
+class PeerTableModel;
 class TransactionTableModel;
+class BanTableModel;
+class PeerTableModel;
 
 class CWallet;
 
@@ -32,7 +36,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for Bitcoin network client. */
+/** Model for Chaincoin network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -43,8 +47,11 @@ public:
 
     OptionsModel *getOptionsModel();
 
+    PeerTableModel *getPeerTableModel();
+    BanTableModel *getBanTableModel();
     //! Return number of connections, default is in- and outbound (total)
     int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
+    QString getMasternodeCountString() const;
     int getNumBlocks() const;
     int getNumBlocksAtStartup();
 
@@ -72,13 +79,17 @@ public:
 private:
     OptionsModel *optionsModel;
 
+    PeerTableModel *peerTableModel;
+    BanTableModel *banTableModel;
     int cachedNumBlocks;
+    QString cachedMasternodeCountString;
     bool cachedReindexing;
     bool cachedImporting;
 
     int numBlocksAtStartup;
 
     QTimer *pollTimer;
+    QTimer *pollMnTimer;
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
@@ -86,6 +97,7 @@ private:
 signals:
     void numConnectionsChanged(int count);
     void numBlocksChanged(int count);
+    void strMasternodesChanged(const QString &strMasternodes);
     void alertsChanged(const QString &warnings);
     void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
 
@@ -94,6 +106,7 @@ signals:
 
 public slots:
     void updateTimer();
+    void updateMnTimer();
     void updateNumConnections(int numConnections);
     void updateAlert(const QString &hash, int status);
 };

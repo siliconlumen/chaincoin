@@ -6,7 +6,7 @@
 #define BITCOIN_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "bitcoin-config.h"
+#include "chaincoin-config.h"
 #endif
 
 #include "compat.h"
@@ -110,6 +110,7 @@ class CService : public CNetAddr
         unsigned short GetPort() const;
         bool GetSockAddr(struct sockaddr* paddr, socklen_t *addrlen) const;
         bool SetSockAddr(const struct sockaddr* paddr);
+
         friend bool operator==(const CService& a, const CService& b);
         friend bool operator!=(const CService& a, const CService& b);
         friend bool operator<(const CService& a, const CService& b);
@@ -151,5 +152,7 @@ bool ConnectSocket(const CService &addr, SOCKET& hSocketRet, int nTimeout = nCon
 bool ConnectSocketByName(CService &addr, SOCKET& hSocketRet, const char *pszDest, int portDefault = 0, int nTimeout = nConnectTimeout);
 /** Return readable error string for a network error code */
 std::string NetworkErrorString(int err);
+
+struct timeval MillisToTimeval(int64_t nTimeout);
 
 #endif

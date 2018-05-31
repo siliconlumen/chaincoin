@@ -48,6 +48,10 @@ private:
     WalletView *currentWalletView();
 
 public slots:
+    /** Switch to logger Page */
+    void gotoLoggerPage();
+    /** Switch to master node list Page */
+    void gotomasternodeList();
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
@@ -70,6 +74,8 @@ public slots:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
+    /** Lock wallet */
+    void lockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();
