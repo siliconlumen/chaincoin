@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>存储地址列表到 %1 时发生错误。请再试一次。</translation>
+        <translation>存储地址列表到%1时发生错误。请再试一次。</translation>
     </message>
 </context>
 <context>
@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>%1 现在要关闭，以完成加密过程。请注意，加密钱包不能完全防止入侵你的电脑的恶意程序偷取钱币。</translation>
+        <translation>%1现在要关闭，以完成加密过程。请注意，加密钱包不能完全防止入侵你的电脑的恶意程序偷取钱币。</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Show information about %1</source>
-        <translation>显示 %1 相关信息</translation>
+        <translation>显示%1相关信息</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -507,7 +507,7 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>处理了％n块的交易记录。</numerusform></translation>
+        <translation><numerusform>处理了%n块的交易记录。</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -571,7 +571,7 @@
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Chaincoin network</source>
-        <translation><numerusform>％n活动连接在链币网上</numerusform></translation>
+        <translation><numerusform>%n活动连接在链币网上</numerusform></translation>
     </message>
     <message>
         <source>Connecting to peers...</source>
@@ -580,6 +580,10 @@
     <message>
         <source>Catching up...</source>
         <translation>更新中...</translation>
+    </message>
+    <message>
+        <source>Synchronizing additional data: %p%</source>
+        <translation>同步额外数据：%p%</translation>
     </message>
     <message>
         <source>Chaincoin Core</source>
@@ -808,6 +812,10 @@
     <message>
         <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
         <translation>当任何一个收款金额小于目前的零散金额上限时，文字会变红色。</translation>
+    </message>
+    <message>
+        <source>Can vary +/- %1 chuff(s) per input.</source>
+        <translation>每个输入可以变化+/-%1 chuff(s)</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1053,6 +1061,10 @@
         <translation>当你点击确认后，%1 将会在 %4 启动时从  %3 中最早的交易开始，下载并处理完整的 %4 区块链 (%2GB)。</translation>
     </message>
     <message>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>最初的同步要求非常高，并且可能会暴露之前未被注意的计算机硬件问题。每次运行%1时，它会继续下载。</translation>
+    </message>
+    <message>
         <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
         <translation>如果你选择限制区块链存储大小（区块链裁剪模式），程序依然会下载并处理全部历史数据，此后才会删除不必须的部分，占用最少的存储空间。</translation>
     </message>
@@ -1078,11 +1090,11 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>％n GB的可用空间</numerusform></translation>
+        <translation><numerusform>%n GB的可用空间</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>（需要％n GB）</numerusform></translation>
+        <translation><numerusform>（需要%n GB）</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1809,6 +1821,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation><numerusform>%n 回合</numerusform></translation>
     </message>
     <message>
+        <source>Found enough compatible inputs to anonymize %1</source>
+        <translation>找到足够的兼容输入来匿名化%1</translation>
+    </message>
+    <message>
         <source>Not enough compatible inputs to anonymize &lt;span style='color:red;'&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style='color:red;'&gt;%2&lt;/span&gt; instead</source>
         <translation>没有足够的兼容输入来匿名化&lt;span style='color:red;'&gt;%1&lt;/span&gt;，&lt;br&gt;会匿名化&lt;span style='color:red;'&gt;%2&lt;/span&gt;反而</translation>
     </message>
@@ -1830,7 +1846,11 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>Denominated inputs have %5 of %n rounds on average</source>
-        <translation><numerusform>计价投入平均有%5 的 ％n轮</numerusform></translation>
+        <translation><numerusform>计价投入平均有%5 的 %n轮</numerusform></translation>
+    </message>
+    <message>
+        <source>keys left: %1</source>
+        <translation>键剩下：%1</translation>
     </message>
     <message>
         <source>Disabled</source>
@@ -1893,6 +1913,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>If you don't want to see internal PrivateSend fees/transactions select "Most Common" as Type on the "Transactions" tab.</source>
         <translation>如果您不想查看内部匿名发送费用/交易，请在“交易”标签中选择“最常见”作为类型。</translation>
+    </message>
+    <message>
+        <source>PrivateSend requires at least %1 to use.</source>
+        <translation>匿名发送使用至少需要%1。</translation>
     </message>
     <message>
         <source>Wallet is locked and user declined to unlock. Disabling PrivateSend.</source>
@@ -2084,6 +2108,18 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>投否决票</translation>
     </message>
     <message>
+        <source>Vote Yes on the selected proposal</source>
+        <translation>对所选提案投票赞成</translation>
+    </message>
+    <message>
+        <source>Vote Abstain on the selected proposal</source>
+        <translation>对所选提案投弃权票</translation>
+    </message>
+    <message>
+        <source>Vote No on the selected proposal</source>
+        <translation>对所选提案投票否</translation>
+    </message>
+    <message>
         <source>Vote yes</source>
         <translation>投赞同票</translation>
     </message>
@@ -2112,6 +2148,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>秒</translation>
     </message>
     <message>
+        <source>List will be updated in %1 %2</source>
+        <translation>列表将在%1%2更新</translation>
+    </message>
+    <message>
         <source>List will be updated in 0 second(s)</source>
         <translation>列表将在0秒内更新</translation>
     </message>
@@ -2126,6 +2166,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Voting</source>
         <translation>投票</translation>
+    </message>
+    <message>
+        <source>You voted %1 %2 time(s) successfully and failed %3 time(s) on %4</source>
+        <translation>成功投票%1%2次，%4次失败%3次在%4</translation>
     </message>
     <message>
         <source>Start Date:</source>
@@ -2210,6 +2254,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>金额</translation>
     </message>
     <message>
+        <source>Enter a Chaincoin address (e.g. %1)</source>
+        <translation>输入链币地址（例如%1）</translation>
+    </message>
+    <message>
         <source>%1 d</source>
         <translation>%1 天</translation>
     </message>
@@ -2239,23 +2287,23 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>％n秒</numerusform></translation>
+        <translation><numerusform>%n秒</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>％n分钟</numerusform></translation>
+        <translation><numerusform>%n分钟</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>％n小时</numerusform></translation>
+        <translation><numerusform>%n小时</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>％n天</numerusform></translation>
+        <translation><numerusform>%n天</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>％n周</numerusform></translation>
+        <translation><numerusform>%n周</numerusform></translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -2263,7 +2311,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>％n年</numerusform></translation>
+        <translation><numerusform>%n年</numerusform></translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -2304,7 +2352,11 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <source>Error: %1</source>
         <translation>错误：%1</translation>
     </message>
-    </context>
+    <message>
+        <source>Error reading masternode configuration file: %1</source>
+        <translation>出错读取主节点配置文件：%1</translation>
+    </message>
+</context>
 <context>
     <name>QRDialog</name>
     <message>
@@ -2609,6 +2661,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>使用上下方向键浏览历史,  以及 %1 清除屏幕。</translation>
     </message>
     <message>
+        <source>Type %1 for an overview of available commands.</source>
+        <translation>输入%1以获取可用命令的概述。</translation>
+    </message>
+    <message>
+        <source>For more information on using this console type %1.</source>
+        <translation>有关使用此控制的更多信息输入%1。</translation>
+    </message>
+    <message>
         <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
         <translation>警告： 已有骗子通过要求用户在此输入指令以盗取钱包。不要在没有完全理解命令规范时使用控制台。</translation>
     </message>
@@ -2686,6 +2746,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Clear</source>
         <translation>清除</translation>
+    </message>
+    <message>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation>原生的segwit地址（又名Bech32或BIP-173）可以在以后降低您的交易费用，并提供更好的防止打字错误的保护，但旧的钱包不支持它们。 取消选中后，将创建与旧钱包兼容的地址。</translation>
+    </message>
+    <message>
+        <source>Generate native segwit (Bech32) address</source>
+        <translation>生成本机segwit（Bech32）地址</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -3013,6 +3081,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>匿名基金</translation>
     </message>
     <message>
+        <source>(privatesend requires this amount to be rounded up to the nearest %1).</source>
+        <translation>（匿名发送要求将此金额四舍五入到最接近的%1）。</translation>
+    </message>
+    <message>
         <source>any available funds (not anonymous)</source>
         <translation>任何可用的资金（不是匿名的）</translation>
     </message>
@@ -3090,7 +3162,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>估计在％n个区块内开始确认。</numerusform></translation>
+        <translation><numerusform>估计在%n个区块内开始确认。</numerusform></translation>
     </message>
     <message>
         <source>Warning: Invalid Chaincoin address</source>
@@ -3364,6 +3436,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>[测试网络]</translation>
     </message>
     <message>
+        <source>Version %1</source>
+        <translation>版本%1</translation>
+    </message>
+    <message>
         <source>The Bitcoin Core developers</source>
         <translation>比特币核心开发人员</translation>
     </message>
@@ -3387,7 +3463,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>打开％n个以上的区块</numerusform></translation>
+        <translation><numerusform>打开%n个以上的区块</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3435,7 +3511,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>，通过％n个节点广播</numerusform></translation>
+        <translation><numerusform>，通过%n个节点广播</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
@@ -3479,7 +3555,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>在％n个块中成熟</numerusform></translation>
+        <translation><numerusform>在%n个块中成熟</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3581,7 +3657,7 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>打开％n个以上的块</numerusform></translation>
+        <translation><numerusform>打开%n个以上的块</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3998,6 +4074,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>-maxtxfee设置得非常高！ 这么大的费用可以通过单笔交易来付。</translation>
     </message>
     <message>
+        <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
+        <translation>费用估算数据不足时将使用的费率（%s / kB）（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
+        <translation>即使不中继交易，也接受从列入白名单的对等方接收的中继交易（默认值：%d）</translation>
+    </message>
+    <message>
         <source>Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info)</source>
         <translation>添加一个节点以连接并尝试保持连接打开（有关详细信息，请参阅`addnode` RPC命令帮助）</translation>
     </message>
@@ -4018,6 +4102,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>绑定到给定地址以侦听JSON-RPC连接。 使用[host]：IPv6的端口表示法。 可以多次指定此选项（默认值：绑定到所有接口）</translation>
     </message>
     <message>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>无法获取数据目录%s上的锁定。 %s可能已在运行。</translation>
+    </message>
+    <message>
         <source>Cannot provide specific connections and have addrman find outgoing connections at the same.</source>
         <translation>无法提供特定连接，用addrman可以查找传出同时连接。</translation>
     </message>
@@ -4034,6 +4122,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>删除所有钱包交易，仅在启动时通过-rescan恢复区块链的那些部分</translation>
     </message>
     <message>
+        <source>Disable all Chaincoin specific functionality (Masternodes, PrivateSend, Governance) (0-1, default: %u)</source>
+        <translation>禁用所有链币特定功能（主节点，匿名发送，治理）（0-1，默认值：%u）</translation>
+    </message>
+    <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
         <translation>发现自己的IP地址（默认：收听时为1，没有-externalip或-proxy）</translation>
     </message>
@@ -4042,24 +4134,140 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>根据MIT软件许可证分发，请参阅随附文件COPYING或&lt;http://www.opensource.org/licenses/mit-license.php&gt;。</translation>
     </message>
     <message>
+        <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
+        <translation>不要将内存池中的交易保持超过数小时（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Enable multiple PrivateSend mixing sessions per block, experimental (0-1, default: %u)</source>
+        <translation>每个块启用多个匿名发送混合会话，实验性的（0-1，默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
+        <translation>允许使用自动匿名发送存储在此钱包中的资金（0-1，默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Equivalent bytes per sigop in transactions for relay and mining (default: %u)</source>
+        <translation>中继和挖掘交易中每个签名操作的等效字节数（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
+        <translation>加载%s时出错：您无法在现有的非高清钱包上启用高清</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
+        <translation>加载钱包%s时出错。 -wallet参数只能指定文件名（不是路径）。</translation>
+    </message>
+    <message>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>读%s时出错！ 所有键都正确读取，但交易数据或通讯簿条目可能丢失或不正确。</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>错误：侦听传入连接失败（侦听返回错误%s）</translation>
+    </message>
+    <message>
         <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
         <translation>排除类别的调试信息。 可以与-debug = 1一起使用，以输出除一个或多个指定类别之外的所有类别的调试日志。</translation>
+    </message>
+    <message>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>收到相关警报或我们看到一个非常长的分支后执行命令（cmd中的%s被消息替换）</translation>
+    </message>
+    <message>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>钱包交易发生变化时执行命令（cmd中的%s被TxID替换）</translation>
+    </message>
+    <message>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>最佳块更改时执行命令（cmd中的%s替换为块哈希）</translation>
+    </message>
+    <message>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation>额外交易为保留在内存中来紧凑块重建（默认值：%u）</translation>
     </message>
     <message>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>无法创建备份，文件已存在！ 如果您在不到60秒的时间内重新启动钱包，就会发生这种情况。 如果你对此感到满意，你可以继续。</translation>
     </message>
     <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
+        <translation>小于此的费用（%s / kB）被认为是中继，挖掘和交易创建的零费用（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>小于此的费用（%s / kB）被视为交易创建的零费用（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
+        <translation>即使违反本地中继策略，也强制从白名单对等体中继交易（默认值：%d）</translation>
+    </message>
+    <message>
         <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
         <translation>找到未经证实的计价产出，将等到确认继续。</translation>
+    </message>
+    <message>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
+        <translation>-checkblocks的块验证有多彻底（0-4，默认值：%u）</translation>
     </message>
     <message>
         <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
         <translation>如果&lt;category&gt;未提供或如果&lt;category&gt;=1，则输出所有调试信息。</translation>
     </message>
     <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>如果未设置paytxfee，请包含足够的费用，以便交易在n个区块内平均开始确认（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
+        <translation>如果该块在链中，则认为它及其祖先是有效的并且可能跳过其脚本验证（0以验证所有，默认值：%s，testnet：%s）</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>金额无效-maxtxfee =&lt;amount&gt;：'%s'（必须至少为%s的再版费用以防止卡住的交易）</translation>
+    </message>
+    <message>
+        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
+        <translation>维护完整的交易指数，由getrawtransaction rpc调用使用（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation>允许的最大中值对等时间偏移调整。 当前的时间视角可能受到这个量向前或向后的同伴的影响。 （默认值：%u秒）</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>我们中继和挖掘的数据载体交易中的最大数据大小（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>单笔钱包交易或原始交易中使用的最高总费用（以%s为单位）; 设置此值太低可能会中止大型交易（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>让行为不端的同伴不再重新连接的秒数（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>输出调试信息（默认：%u，供应&lt;category&gt;是可选的）</translation>
+    </message>
+    <message>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>请检查您的计算机的日期和时间是否正确！ 如果您的时钟错误，%s将无法正常工作。</translation>
+    </message>
+    <message>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>如果您发现%s有用，请提供帮助。 访问%s以获取有关该软件的更多信息。</translation>
+    </message>
+    <message>
         <source>PrivateSend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
         <translation>匿名发送使用精确计价的金额来发送资金，您可能只需要匿名化一些币。</translation>
+    </message>
+    <message>
+        <source>Provide liquidity to PrivateSend by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
+        <translation>为匿名发送提供流动资金进过不常混合的币（0-100，默认：%u，1 =非常频繁，高费用，100 =非常罕见，低费用）</translation>
+    </message>
+    <message>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>修剪配置低于%d MiB的最小值。 请使用更高的号码。</translation>
     </message>
     <message>
         <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
@@ -4070,20 +4278,52 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>如果地址较低，则通过DNS查询查询对等地址（默认值：1，除非使用-connect）</translation>
     </message>
     <message>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>随机化每个代理连接的凭据。 这将启用Tor流隔离（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Reduce storage requirements by pruning (deleting) old blocks. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, &gt;%u = target size in MiB to use for block files)</source>
+        <translation>通过修剪（删除）旧块来降低存储要求。 此模式与-txindex和-rescan不兼容。 警告：恢复此设置需要重新下载整个区块链。 （默认：0 =禁用修剪块，&gt;%u = MiB中用于块文件的目标大小）</translation>
+    </message>
+    <message>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>在修剪模式下无法重新扫描。 您将需要使用-reindex，它将再次下载整个区块链。</translation>
+    </message>
+    <message>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation>设置要在块创建中包含的事务的最低费率（%s / kB）。 （默认：%s）</translation>
+    </message>
+    <message>
+        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
+        <translation>设置脚本验证线程的数量（%u到%d，0 = auto，&lt;0 =保留许多核心自由，默认值：%d）</translation>
+    </message>
+    <message>
+        <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
+        <translation>设置在非详细模式下返回的原始交易或块十六进制的序列化，non-segwit（0）或segwit（1）（默认值：%d）</translation>
     </message>
     <message>
         <source>Specify directory to hold wallets (default: &lt;datadir&gt;/wallets if it exists, otherwise &lt;datadir&gt;)</source>
         <translation>指定保存钱包的目录（默认值：&lt;datadir&gt;/ wallets，如果存在，否则&lt;datadir&gt;）</translation>
     </message>
     <message>
+        <source>Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)</source>
+        <translation>指定调试日志文件的位置：这可以是绝对路径或相对于数据目录的路径（默认值：%s）</translation>
+    </message>
+    <message>
         <source>Starting in lite mode, all Chaincoin-specific functionality is disabled.</source>
         <translation>从lite模式开始，所有链币特定功能都被禁用。</translation>
     </message>
     <message>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation>支持使用bloom过滤器过滤块和交易（默认值：%u）</translation>
+    </message>
+    <message>
         <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
         <translation>块数据库包含一个看起来来自未来的块。 这可能是由于您的计算机的日期和时间设置不正确。 如果您确定计算机的日期和时间正确，则仅重建块数据库</translation>
+    </message>
+    <message>
+        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
+        <translation>费率（以%s / kB表示），表示您通过将费用添加到费用中来放弃更改的容忍度（默认值：%s）。 注意：如果输出是以此速率的灰尘，则丢弃输出，但我们将始终丢弃灰尘接力费和超过最长目标的费用估算限制的丢弃费用</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -4100,6 +4340,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>这是您在无法获得费用估算时可能会支付的交易费用。</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>网络版本字符串（%i）的总长度超过最大长度（%i）。 减少多项式的数量或uacomments大小。</translation>
+    </message>
+    <message>
+        <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
+        <translation>试图保持给定目标下的出站流量（每24小时MiB），0 =无限制（默认值：%d）</translation>
     </message>
     <message>
         <source>Unable to locate enough PrivateSend denominated funds for this transaction.</source>
@@ -4126,8 +4374,16 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>忽略不支持的参数-whitelistalwaysrelay，使用-whitelistrelay和/或-whitelistforcerelay。</translation>
     </message>
     <message>
+        <source>Use N separate masternodes for each denominated input to mix funds (2-16, default: %u)</source>
+        <translation>为每个计价输入使用N个单独的主节点来混合基金（2-16，默认：%u）</translation>
+    </message>
+    <message>
         <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
         <translation>使用UPnP映射侦听端口（默认：侦听时为1，无-proxy）</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>使用单独的SOCKS5代理通过Tor隐藏服务到达对等方（默认值：%s）</translation>
     </message>
     <message>
         <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
@@ -4142,6 +4398,18 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>钱包被锁定，无法补充键池！ 禁用自动备份和混音，请解锁您的钱包以补充键池。</translation>
     </message>
     <message>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation>电子钱包不会创建违反内存池链限制的交易（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Warning: At least %d of %d masternodes are running on a newer software version. Please check latest releases, you might need to update too.</source>
+        <translation>警告：在较新的软件版本上，至少%d%d个主节点正在运行。 请检查最新版本，您可能还需要更新。</translation>
+    </message>
+    <message>
+        <source>Warning: Every masternode (out of %d known ones) is running on a newer software version. Please check latest releases, it's very likely that you missed a major/critical update.</source>
+        <translation>警告：每个主节点（在%d个已知的主节点中）都运行在较新的软件版本上。 请检查最新版本，您很可能错过了主要/关键更新。</translation>
+    </message>
+    <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>警告：网络似乎不完全同意！ 一些矿工似乎遇到了问题。</translation>
     </message>
@@ -4150,12 +4418,24 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>警告：正在挖掘未知的块版本！ 可能有未知的规则生效</translation>
     </message>
     <message>
+        <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>警告：钱包文件损坏，数据被抢救！ 原始%s在%s中保存为%s; 如果您的余额或交易不正确，您应该从备份恢复。</translation>
+    </message>
+    <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation>警告：我们似乎并不完全同意我们的同行！ 您可能需要升级，或者其他的节点可能需要升级。</translation>
     </message>
     <message>
+        <source>What type of addresses to use ("legacy", "p2sh-segwit", or "bech32", default: "%s")</source>
+        <translation>要使用哪种类型的地址（“legacy”，“p2sh-segwit”或“bech32”，默认值：“%s”）</translation>
+    </message>
+    <message>
         <source>What type of change to use ("legacy", "p2sh-segwit", or "bech32"). Default is same as -addresstype, except when -addresstype=p2sh-segwit a native segwit output is used when sending to a native segwit address)</source>
         <translation>使用什么类型的更改（“legacy”，“p2sh-segwit”，或“bech32”）。 默认值与-addresstype相同，除非-addresstype = p2sh-segwit，在发送到本机segwit地址时使用本机segwit输出）</translation>
+    </message>
+    <message>
+        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
+        <translation>是否在关机时保存内存池并在重启时加载（默认值：%u）</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
@@ -4178,6 +4458,38 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>不推荐使用masternodeaddr选项。 请使用masternode.conf来管理远程主节点。</translation>
     </message>
     <message>
+        <source>%d of last 100 blocks have unexpected version</source>
+        <translation>最后100个块的%d具有意外版本</translation>
+    </message>
+    <message>
+        <source>%s corrupt, salvage failed</source>
+        <translation>%s腐败，打捞失败</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>%s设置得非常高！</translation>
+    </message>
+    <message>
+        <source>(%d could be used only on mainnet)</source>
+        <translation>(%d只能在主网上使用）</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>（默认：%s）</translation>
+    </message>
+    <message>
+        <source>(default: %u)</source>
+        <translation>（默认：%u）</translation>
+    </message>
+    <message>
+        <source>(must be %d for mainnet)</source>
+        <translation>（对于主网，必须是%d）</translation>
+    </message>
+    <message>
+        <source>-maxmempool must be at least %d MB</source>
+        <translation>-maxmempool必须至少为%d MB</translation>
+    </message>
+    <message>
         <source>&lt;category&gt; can be:</source>
         <translation>&lt;category&gt;可：</translation>
     </message>
@@ -4190,12 +4502,20 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>接受来自外部的连接（默认值：如果没有-proxy或-connect，则为1）</translation>
     </message>
     <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>接受公共REST请求（默认值：%u）</translation>
+    </message>
+    <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
         <translation>允许对-addnode，-seednode和-connect进行DNS查找</translation>
     </message>
     <message>
         <source>Already have that input.</source>
         <translation>已经有了这个输入。</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>始终通过DNS查找查询对等地址（默认值：%u）</translation>
     </message>
     <message>
         <source>Append comment to the user agent string</source>
@@ -4208,6 +4528,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Automatic backups disabled</source>
         <translation>禁用自动备份</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>自动创建Tor隐藏服务（默认值：%d）</translation>
     </message>
     <message>
         <source>Block creation options:</source>
@@ -4228,6 +4552,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Cannot downgrade wallet</source>
         <translation>无法降级钱包</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>无法解析 - %s地址：'%s'</translation>
     </message>
     <message>
         <source>Chain selection options:</source>
@@ -4256,6 +4584,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Connection options:</source>
         <translation>连接选项：</translation>
+    </message>
+    <message>
+        <source>Copyright (C) %i-%i</source>
+        <translation>版权所有（C）%i-%i</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -4302,6 +4634,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>启用发布原始交易在&lt;address&gt;</translation>
     </message>
     <message>
+        <source>Enable the client to act as a masternode (0-1, default: %u)</source>
+        <translation>使客户端充当主节点（0-1，默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Enable transaction replacement in the memory pool (default: %u)</source>
+        <translation>启用交易替换在内存池中（默认值：%u）</translation>
+    </message>
+    <message>
         <source>Entries are full.</source>
         <translation>参赛作品已满。</translation>
     </message>
@@ -4310,12 +4650,48 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>进入超过最大尺寸。</translation>
     </message>
     <message>
+        <source>Error creating %s: You can't create non-HD wallets with this version.</source>
+        <translation>创建%s时出错：您无法使用此版本创建非高清钱包。</translation>
+    </message>
+    <message>
         <source>Error initializing block database</source>
         <translation>初始化块数据库时出错</translation>
     </message>
     <message>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>出错在钱包数据库环境初始化时%s！</translation>
+    </message>
+    <message>
+        <source>Error loading %s</source>
+        <translation>出错在加载时%s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet corrupted</source>
+        <translation>加载%s时出错：电子钱包已损坏</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet requires newer version of %s</source>
+        <translation>加载%s时出错：电子钱包需要较新版本的%s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
+        <translation>加载%s时出错：您无法在已有的高清钱包上禁用高清</translation>
+    </message>
+    <message>
         <source>Error loading block database</source>
         <translation>加载区块数据库时出错</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
+        <translation>加载钱包%s时出错。 -wallet文件名必须是常规文件。</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
+        <translation>加载钱包%s时出错。 指定了重复的-wallet文件名。</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
+        <translation>加载钱包%s时出错。 -wallet文件名中的字符无效。</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -4340,6 +4716,18 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Error: Disk space is low!</source>
         <translation>错误：磁盘空间很低！</translation>
+    </message>
+    <message>
+        <source>Failed to create backup %s!</source>
+        <translation>无法创建备份%s！</translation>
+    </message>
+    <message>
+        <source>Failed to create backup, error: %s</source>
+        <translation>无法创建备份，错误：%s</translation>
+    </message>
+    <message>
+        <source>Failed to delete backup, error: %s</source>
+        <translation>无法删除备份，错误：%s</translation>
     </message>
     <message>
         <source>Failed to find mixing queue to join</source>
@@ -4378,8 +4766,20 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>无法启动新的混合队列</translation>
     </message>
     <message>
+        <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
+        <translation>要添加到您发送的交易的费用（以%s / kB为单位）（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Found enough users, signing ( waiting %s )</source>
+        <translation>找到足够的用户，在签名（等待%s）</translation>
+    </message>
+    <message>
         <source>Found enough users, signing ...</source>
         <translation>找到足够的用户，在签名......</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>启动时要检查的块数（默认值：%u，0 =全部）</translation>
     </message>
     <message>
         <source>Importing...</source>
@@ -4388,6 +4788,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Imports blocks from external blk000??.dat file on startup</source>
         <translation>在启动时从外部blk000 ??。dat文件导入块</translation>
+    </message>
+    <message>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>在调试输出中包含IP地址（默认值：%u）</translation>
     </message>
     <message>
         <source>Incompatible mode.</source>
@@ -4406,12 +4810,40 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>信息</translation>
     </message>
     <message>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>初始化健全性检查失败。 %s正在关闭。</translation>
+    </message>
+    <message>
         <source>Input is not valid.</source>
         <translation>输入无效。</translation>
     </message>
     <message>
         <source>Insufficient funds.</source>
         <translation>不充足的资金。</translation>
+    </message>
+    <message>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>无效的地址或主机名：'%s'</translation>
+    </message>
+    <message>
+        <source>Invalid -proxy address or hostname: '%s'</source>
+        <translation>无效的-proxy地址或主机名：'%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>无效金额 - %s =&lt;amount&gt;：'%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
+        <translation>金额无效-discardfee =&lt;amount&gt;：'%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
+        <translation>金额无效 -fallbackfee =&lt;amount&gt;：'%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>金额无效-paytxfee =&lt;amount&gt;：'%s'（必须至少为%s）</translation>
     </message>
     <message>
         <source>Invalid input count.</source>
@@ -4422,12 +4854,28 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>masternodeprivkey无效。 请参阅文档。</translation>
     </message>
     <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>-whitelist中指定的网络掩码无效：'%s'</translation>
+    </message>
+    <message>
         <source>Invalid port detected in masternode.conf</source>
         <translation>在masternode.conf中检测到无效的端口</translation>
     </message>
     <message>
         <source>Invalid script detected.</source>
         <translation>检测到无效的脚本。</translation>
+    </message>
+    <message>
+        <source>Keep N CHC anonymized (default: %u)</source>
+        <translation>保持N 链币匿名（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>在内存中保留最多不可连接的交易（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
+        <translation>将交易内存池保持在&lt;n&gt;兆字节以下（默认值：%u）</translation>
     </message>
     <message>
         <source>Keypool ran out, please call keypoolrefill first</source>
@@ -4494,6 +4942,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>锁已经到位。</translation>
     </message>
     <message>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>从主节点配置文件中锁定主节点（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
+        <translation>保持最多&lt;n&gt;多数与同伴的连接（默认：%u）</translation>
+    </message>
+    <message>
         <source>Make the wallet broadcast transactions</source>
         <translation>制作钱包广播交易</translation>
     </message>
@@ -4518,12 +4974,24 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>精简模式不支持主节点。</translation>
     </message>
     <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>最大每连接接收缓冲区，&lt;n&gt;* 1000字节（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>最大每连接发送缓冲区，&lt;n&gt;* 1000字节（默认值：%u）</translation>
+    </message>
+    <message>
         <source>Missing input transaction information.</source>
         <translation>缺少输入交易信息。</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
         <translation>正在混合......</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>需要使用-whitebind指定端口：'%s'</translation>
     </message>
     <message>
         <source>No Masternodes detected.</source>
@@ -4634,6 +5102,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>从当前索引的块重建链状态</translation>
     </message>
     <message>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>由于系统限制，将-max连接从%d减少到%d。</translation>
+    </message>
+    <message>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>转播和挖矿数据载体交易（默认：%u）</translation>
+    </message>
+    <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
         <translation>是否转发 非P2SH格式的多签名交易 (默认: %u) </translation>
     </message>
@@ -4662,12 +5138,20 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>将跟踪/调试信息发送到控制台而不是debug.log文件</translation>
     </message>
     <message>
+        <source>Send transactions with full-RBF opt-in enabled (RPC only, default: %u)</source>
+        <translation>使用完全RBF选择加入发送交易（仅限RPC，默认值：%u）</translation>
+    </message>
+    <message>
         <source>Session not complete!</source>
         <translation>会话未完成!</translation>
     </message>
     <message>
         <source>Session timed out.</source>
         <translation>会话超时</translation>
+    </message>
+    <message>
+        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
+        <translation>设置数据库缓存大小以MB为单（%d到%d，默认值：%d）</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
@@ -4698,8 +5182,36 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>交易签名失败</translation>
     </message>
     <message>
+        <source>Specified -walletdir "%s" does not exist</source>
+        <translation>指定的-walletdir“%s”不存在</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir "%s" is a relative path</source>
+        <translation>指定的-walletdir“%s”是相对路径</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir "%s" is not a directory</source>
+        <translation>指定的-walletdir“%s”不是目录</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>指定配置文件（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>以毫秒为单位指定连接超时（最小值：1，默认值：%d）</translation>
+    </message>
+    <message>
         <source>Specify data directory</source>
         <translation>指定数据目录</translation>
+    </message>
+    <message>
+        <source>Specify masternode configuration file (default: %s)</source>
+        <translation>指定主节点配置文件（默认值：%s）</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>指定pid文件（默认值：%s）</translation>
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
@@ -4710,8 +5222,24 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>指定您自己的公共地址</translation>
     </message>
     <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>发送交易时花费未经证实的更改（默认值：%u）</translation>
+    </message>
+    <message>
         <source>Starting network threads...</source>
         <translation>启动网络线程......</translation>
+    </message>
+    <message>
+        <source>Submitted following entries to masternode: %u / %d</source>
+        <translation>将以下条目提交给主节点：%u /%d</translation>
+    </message>
+    <message>
+        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>提交给主节点，等待更多条目（%u /%d）%s</translation>
+    </message>
+    <message>
+        <source>Submitted to masternode, waiting in queue %s</source>
+        <translation>提交给主节点，在队列中等待%s</translation>
     </message>
     <message>
         <source>Synchroning blockchain...</source>
@@ -4742,6 +5270,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>同步主节点....</translation>
     </message>
     <message>
+        <source>The source code is available from %s.</source>
+        <translation>源代码可从%s获得。</translation>
+    </message>
+    <message>
         <source>The transaction amount is too small to pay the fee</source>
         <translation>交易金额太小，无法支付费用</translation>
     </message>
@@ -4764,6 +5296,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
         <translation>这是您发送交易时将支付的交易费用。</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>阈值用来断开行为不端的对等体（默认值：%u）</translation>
+    </message>
+    <message>
+        <source>Too many %f denominations, removing.</source>
+        <translation>太多%f面额，去除。</translation>
     </message>
     <message>
         <source>Tor control port password (default: empty)</source>
@@ -4818,6 +5358,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>尝试连接…</translation>
     </message>
     <message>
+        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
+        <translation>无法绑定到此计算机上的%s（绑定返回错误%s）</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>无法绑定到此计算机上的%s。 %s可能已在运行。</translation>
+    </message>
+    <message>
         <source>Unable to generate initial keys</source>
         <translation>无法生成初始密钥</translation>
     </message>
@@ -4826,8 +5374,24 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>无法启动HTTP服务器。 请参阅调试日志了解详细信</translation>
     </message>
     <message>
+        <source>Unknown address type '%s'</source>
+        <translation>未知地址类型'%s'</translation>
+    </message>
+    <message>
+        <source>Unknown change type '%s'</source>
+        <translation>未知的更改类型'%s'</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: '%s'</source>
+        <translation>-onlynet中指定的未知网络：'%s'</translation>
+    </message>
+    <message>
         <source>Unknown response.</source>
         <translation>未知的回复。</translation>
+    </message>
+    <message>
+        <source>Unknown state: id = %u</source>
+        <translation>未知状态：id =%u</translation>
     </message>
     <message>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
@@ -4842,6 +5406,10 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>不支持的参数-tor发现，使用-onion。</translation>
     </message>
     <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>不支持的日志记录类别%s =%s。</translation>
+    </message>
+    <message>
         <source>Upgrade wallet to latest format on startup</source>
         <translation>在启动时将钱包升级到最新格式</translation>
     </message>
@@ -4850,8 +5418,16 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <translation>升级UTXO数据库</translation>
     </message>
     <message>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>使用UPnP映射侦听端口（默认值：%u）</translation>
+    </message>
+    <message>
         <source>Use the test chain</source>
         <translation>使用测试链</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>用户代理注释（%s）包含不安全的字符。</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
@@ -4864,6 +5440,14 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Verifying wallet(s)...</source>
         <translation>验证钱包中...</translation>
+    </message>
+    <message>
+        <source>Very low number of keys left: %d</source>
+        <translation>剩余的键数非常少：%d</translation>
+    </message>
+    <message>
+        <source>Wallet %s resides outside wallet directory %s</source>
+        <translation>电子钱包%s位于钱包目录%s之外</translation>
     </message>
     <message>
         <source>Wallet debugging/testing options:</source>
@@ -4884,6 +5468,18 @@ https://www.transifex.com/projects/p/chaincoin/</source>
     <message>
         <source>Warning</source>
         <translation>警告</translation>
+    </message>
+    <message>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>警告：激活了未知的新规则（versionbit%i）</translation>
+    </message>
+    <message>
+        <source>Wasn't able to create wallet backup folder %s!</source>
+        <translation>无法创建钱包备份文件夹%s！</translation>
+    </message>
+    <message>
+        <source>Whether to operate in a blocks only mode (default: %u)</source>
+        <translation>是否以仅块模式运行（默认值：%u）</translation>
     </message>
     <message>
         <source>Will retry...</source>
