@@ -4010,5 +4010,21 @@ https://www.transifex.com/projects/p/chaincoin/</source>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
         <translation>יצירת גיבוי נכשל, הקובץ כבר קיים! זה יכול לקרות אם אתה מפעיל מחדש את הארנק בתוך פחות מ 60 שניות. אתה יכול להמשיך אם אתה בסדר עם זה.</translation>
     </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
+        <translation>עמלות (ב%s / kB) קטן יותר מזה נחשב לאפס, כריית ועסקה (ברירת המחדל:%s)</translation>
+    </message>
+    <message>
+        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
+        <translation>אלץ את העברת העסקאות מעמיתים ברשימת ההיתרים גם אם הם מפרים את מדיניות הממסר המקומי (ברירת המחדל:%d)</translation>
+    </message>
+    <message>
+        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
+        <translation>נמצאו תפוקות נקובות לא מאושרות, ימתין עד שיאושר כדי להמשיך</translation>
+    </message>
+    <message>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
+        <translation>כמה יסודי האימות של בלוקים - checkblocks הוא (0-4, ברירת המחדל:%u)</translation>
+    </message>
     </context>
 </TS>

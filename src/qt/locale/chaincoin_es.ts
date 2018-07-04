@@ -654,7 +654,11 @@
 </context>
 <context>
     <name>ClientModel</name>
-    </context>
+    <message>
+        <source>Total: %1 (PS compatible: %2 / Enabled: %3)</source>
+        <translation>Total: %1 (compatible con PS: %2 / habilitado: %3)</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -2105,6 +2109,18 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
         <translation>Vota No</translation>
     </message>
     <message>
+        <source>Vote Yes on the selected proposal</source>
+        <translation>Vota Si en propuestas seleccionada</translation>
+    </message>
+    <message>
+        <source>Vote Abstain on the selected proposal</source>
+        <translation>Vota Abstenerse en propuestas seleccionada</translation>
+    </message>
+    <message>
+        <source>Vote No on the selected proposal</source>
+        <translation>Vota No en propuestas seleccionada</translation>
+    </message>
+    <message>
         <source>Vote yes</source>
         <translation>Vota Si</translation>
     </message>
@@ -2731,6 +2747,14 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
     <message>
         <source>Clear</source>
         <translation>Vaciar</translation>
+    </message>
+    <message>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation>Las direcciones segwit nativas (también conocidas como Bech32 o BIP-173) reducen las tarifas de transacción más adelante y ofrecen una mejor protección contra errores tipográficos, pero las billeteras antiguas no las admiten. Cuando no está marcada, se creará una dirección compatible con billeteras más antiguas.</translation>
+    </message>
+    <message>
+        <source>Generate native segwit (Bech32) address</source>
+        <translation>Genera dirección segwit nativa (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -5027,6 +5051,10 @@ Establecer la serialización de las transacciones sin procesar o el bloque hex d
     <message>
         <source>Password for JSON-RPC connections</source>
         <translation>Contraseña para las conexiones JSON-RPC</translation>
+    </message>
+    <message>
+        <source>Port: %d</source>
+        <translation>Puerto: %d</translation>
     </message>
     <message>
         <source>Prepend debug output with timestamp (default: %u)</source>

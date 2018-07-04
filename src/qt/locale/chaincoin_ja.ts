@@ -2109,6 +2109,18 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
         <translation>反対に投票</translation>
     </message>
     <message>
+        <source>Vote Yes on the selected proposal</source>
+        <translation>選択した議案に賛成投票</translation>
+    </message>
+    <message>
+        <source>Vote Abstain on the selected proposal</source>
+        <translation>選択した議案に棄権票</translation>
+    </message>
+    <message>
+        <source>Vote No on the selected proposal</source>
+        <translation>選択した議案に反対投票</translation>
+    </message>
+    <message>
         <source>Vote yes</source>
         <translation>賛成に投票</translation>
     </message>
@@ -2735,6 +2747,14 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
     <message>
         <source>Clear</source>
         <translation>クリア</translation>
+    </message>
+    <message>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation>ネイティブsegwitアドレス（別名Bech32またはBIP-173）を使うと取引手数料が安くなり、またタイプミスからの保護が向上しますが、古いウォレットは対応していません。チェックを外した場合、古いウォレットと互換性のあるアドレスが代わりに生成されます。</translation>
+    </message>
+    <message>
+        <source>Generate native segwit (Bech32) address</source>
+        <translation>ネイティブsegwit (Bech32) アドレスを生成する</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -4111,6 +4131,10 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
         <translation>自分のIPアドレスを解決する (規定値: リッスンをしており、-externalipまたは-proxyオプションが指定されていない場合は1)</translation>
     </message>
     <message>
+        <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
+        <translation>MITソフトウェアライセンスのもとで配布されています。付属のファイルまたは &lt;http://www.opensource.org/licenses/mit-license.php&gt; を参照してください。</translation>
+    </message>
+    <message>
         <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
         <translation>mempool内でトランザクションを &lt;n&gt; 時間以上保持しない (初期値: %u)</translation>
     </message>
@@ -4923,6 +4947,10 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
         <translation>すでにロックされています。</translation>
     </message>
     <message>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>マスターノードをマスターノード設定ファイルからロックする (初期値: %u)</translation>
+    </message>
+    <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
         <translation>ピアの接続数を最大でも &lt;n&gt; 個に維持する (初期値: %u)</translation>
     </message>
@@ -5353,6 +5381,10 @@ https://www.transifex.com/projects/p/chaincoin/</translation>
     <message>
         <source>Unknown address type '%s'</source>
         <translation>不明なアドレス型 '%s'</translation>
+    </message>
+    <message>
+        <source>Unknown change type '%s'</source>
+        <translation>不明なおつり型です '%s'</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
