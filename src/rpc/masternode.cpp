@@ -356,7 +356,6 @@ UniValue masternode(const JSONRPCRequest& request)
             }
 
             UniValue statusObj(UniValue::VOBJ);
-            statusObj.push_back(Pair("alias", mne.getAlias()));
             statusObj.push_back(Pair("result", fResult ? "successful" : "failed"));
 
             if (fResult) {
@@ -366,7 +365,7 @@ UniValue masternode(const JSONRPCRequest& request)
                 statusObj.push_back(Pair("errorMessage", strError));
             }
 
-            resultsObj.push_back(Pair("status", statusObj));
+            resultsObj.push_back(Pair(mne.getAlias(), statusObj));
         }
         mnodeman.NotifyMasternodeUpdates(g_connman.get());
 
