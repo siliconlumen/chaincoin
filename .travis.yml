@@ -75,6 +75,8 @@ jobs:
         PACKAGES="g++-arm-linux-gnueabihf"
         DEP_OPTS="NO_QT=1"
         GOAL="install"
+        RUN_TESTS=false
+        RUN_BENCH=false
         BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
 # Win32
     - stage: test
@@ -84,6 +86,7 @@ jobs:
         DEP_OPTS="NO_QT=1"
         PACKAGES="python3 nsis g++-mingw-w64-i686 wine-binfmt wine32"
         RUN_TESTS=false
+        RUN_BENCH=false
         GOAL="install"
         BITCOIN_CONFIG="--enable-reduce-exports"
 # Win64
@@ -93,6 +96,7 @@ jobs:
         DEP_OPTS="NO_QT=1"
         PACKAGES="python3 nsis g++-mingw-w64-x86-64 wine-binfmt wine64"
         RUN_TESTS=false
+        RUN_BENCH=false
         GOAL="install"
         BITCOIN_CONFIG="--enable-reduce-exports"
 # 32-bit + dash
@@ -102,6 +106,7 @@ jobs:
         PACKAGES="g++-multilib python3-zmq"
         DEP_OPTS="NO_QT=1"
         RUN_TESTS=false
+        RUN_BENCH=false
         GOAL="install"
         BITCOIN_CONFIG="--enable-zmq --enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++"
         CONFIG_SHELL="/bin/dash"
@@ -122,6 +127,7 @@ jobs:
         PACKAGES="python3-zmq qtbase5-dev qttools5-dev-tools libssl1.0-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libqrencode-dev"
         NO_DEPENDS=1
         RUN_TESTS=false
+        RUN_BENCH=false
         GOAL="install"
         BITCOIN_CONFIG="--enable-zmq --with-incompatible-bdb --enable-glibc-back-compat --enable-reduce-exports --with-gui=qt5 CPPFLAGS=-DDEBUG_LOCKORDER"
 # x86_64 Linux, No wallet
